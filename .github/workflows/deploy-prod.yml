@@ -32,4 +32,10 @@ jobs:
           echo "${{ secrets.ENV_FILE }}" > .env
       - name: Run e2e
         run: yarn run test:e2e
+  deploy:
+    needs: e2e
+    runs-on: ubuntu-latest
+    steps:
+      - name: Deploy on server
+        run: curl --silent "${{ secrets.API_HOOK_URL }}"
       
