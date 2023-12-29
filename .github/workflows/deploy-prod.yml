@@ -37,5 +37,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Deploy on server
-        run: curl --silent "${{ secrets.API_HOOK_URL }}"
+        run: |
+          if: $(curl --write-out '%{http_code}' --silent --output /dev/null "${{ secrets.API_HOOK_URL }}")!="200"
+          then:
+            echo "FAILURE"
+            exit 1
+          else:
+            echo "SUCCESS"
+          fi
+     
       
