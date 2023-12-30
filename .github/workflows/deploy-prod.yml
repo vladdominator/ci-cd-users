@@ -42,9 +42,9 @@ jobs:
           echo "$CODE"
           if [ "$CODE" -ne 200 ];
           then
-            echo "SUCCESS"   
+            echo "FAILTURE" && exit 1
           else
-            echo "FAILTURE" | exit 1
+            echo "SUCCESS"  
           fi
      
       
