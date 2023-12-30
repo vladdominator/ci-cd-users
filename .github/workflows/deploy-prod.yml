@@ -38,7 +38,7 @@ jobs:
     steps:
       - name: Deploy on server
         run: |
-          CODE=`curl --write-out '%{http_code}' --silent --output /dev/null ${{ secrets.API_HOOK_URL }}`
+          CODE=`curl --write-out '%{http_code}' --silent --output /dev/null "${{ secrets.API_HOOK_URL }}"`
           if [ $CODE!="200" ];
           then
             echo "FAILURE"
