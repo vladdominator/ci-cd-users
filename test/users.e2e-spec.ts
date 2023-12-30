@@ -68,6 +68,6 @@ describe('Users Controller (e2e)', () => {
     const user = await agent.get(`/users/${userCreated.body._id}`);
     await userService.deletePermit(userCreated.body._id);
 
-    expect(user.body.productsId).toContain(idProduct);
+    expect(user.body.productsId).toContain(idProduct + 'd');
   });
 });
