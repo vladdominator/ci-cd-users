@@ -40,7 +40,7 @@ jobs:
         run: |
           CODE=`curl --write-out '%{http_code}' --silent --output /dev/null "${{ secrets.API_HOOK_URL }}"`
           echo "$CODE"
-          if [ $CODE!="200" ];
+          if [ $CODE!=200 ];
           then
             echo "FAILURE"
             exit 1
